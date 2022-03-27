@@ -34,8 +34,7 @@ async function postData(url, data) {
 async function updateUI() {
     try {
         const fetchUIData = await fetch("/all");
-        /*         const response = await fetchUIData.json();
-         */
+        const response = await fetchUIData.json();
         console.log({ fetchUIData });
         const dateElement = document.getElementById("date");
         const tempElement = document.getElementById("temp");
@@ -67,7 +66,6 @@ async function generatingResults() {
 
 generateBtn.addEventListener("click", () => {
     generatingResults();
-
 });
 
 
