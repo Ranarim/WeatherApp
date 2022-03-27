@@ -35,17 +35,14 @@ app.post("/all", postData)
 
 // Callback function to complete GET '/all'
 function sendData(req, res) {
-    req.send(projectData);
+    res.send(projectData);
 }
 
 // Post Route
 function postData(req, res) {
     const data = req.body;
-    data.temperature = projectData.temperature;
+    data.temperature = projectData.temp;
     data.date = projectData.date;
-    data.uresponse = projectData.uresponse;
+    data.content = projectData.content;
     res.send(projectData)
 }
-
-// Importing the Express librabry in the project
-// Creating instantiates inside the app variable
