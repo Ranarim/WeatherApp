@@ -31,7 +31,7 @@ async function postData(url, data) {
     }
 }
 
-async function updateUI() {
+async function updateDOM() {
     try {
         const fetchUIData = await fetch("/all");
         const response = await fetchUIData.json();
@@ -58,7 +58,7 @@ async function generatingResults() {
         const feelings = document.getElementById("feelings").value;
         postData("/all", data = { date: date, temp: temperature, content: feelings });
         console.log(date, feelings, temperature);
-        updateUI();
+        updateDOM();
     } catch (error) {
         console.log(error, "generatingResults didnt")
     }
