@@ -57,7 +57,7 @@ async function updateUI() {
         tempElement.innerHTML = `${response.temp}`;
         contentElement.innerHTML = `${response.content}`;
     } catch (error) {
-        console.log(error, "updating UI didn't work")
+        console.log(error, 'updating UI didnt work')
     }
 }
 
