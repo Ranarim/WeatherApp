@@ -9,7 +9,7 @@ const app = express();
 
 /* Dependencies */
 /* Middleware*/
-const bodyParser = require("body-parser")
+const bodyParser = require("body-parser");
 const cors = require("cors");
 
 
