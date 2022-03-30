@@ -23,7 +23,7 @@ async function postData(url, data) {
         body: JSON.stringify(data),
     })
     try {
-        const JSONData = response.json();
+        const JSONData = await response.json();
         return JSONData;
 
     } catch (error) {
@@ -33,7 +33,7 @@ async function postData(url, data) {
 
 async function updateDOM() {
     try {
-        const fetchUIData = await fetch("/all");
+        const fetchUIData = await fetch('http://localhost:3000/all');
         const response = await fetchUIData.json();
         console.log({ fetchUIData });
         const dateElement = document.getElementById("date");
@@ -42,7 +42,7 @@ async function updateDOM() {
         dateElement.innerHTML = response.date;
         tempElement.innerHTML = `${response.temp}`;
         contentElement.innerHTML = `${response.content}`;
-        console.log(response.date, response.temp, response.content)
+        console.log(response)
     } catch (error) {
         console.log(error, 'updating UI didnt work')
     }
