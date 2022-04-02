@@ -15,6 +15,7 @@ const cors = require("cors");
 
 //Here we are configuring express to use body-parser as middle-ware.
 app.use(bodyParser.json());
+app.use(express.json())
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Cors for cross origin allowance
@@ -44,5 +45,7 @@ function postData(req, res) {
     data.temperature = projectData.temp;
     data.date = projectData.date;
     data.content = projectData.content;
+    console.log(projectData);
     res.send(projectData)
+
 }

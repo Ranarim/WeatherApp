@@ -1,19 +1,21 @@
 const generateBtn = document.getElementById("generate");
 
-async function getData(zip) {
+const getData = async(zip) => {
     try {
         const zipCode = zip;
         const personalAPIKey = '532d4540aaa725b5502a16c2c292e664';
         const baseURL = `https://api.openweathermap.org/data/2.5/weather?q=${zipCode},de&appid=${personalAPIKey}&units=metric `
         const fetchedData = await fetch(baseURL);
         const weatherData = await fetchedData.json();
+        console.log(weatherData);
         return weatherData
     } catch (error) {
         console.log(error, "getting data didnt work!");
     }
 }
 
-async function postData(url, data) {
+const postData = async(url, data) => {
+    console.log(url, data)
     const response = await fetch(url, {
         method: "POST",
         credentials: 'same-origin',
@@ -31,24 +33,23 @@ async function postData(url, data) {
     }
 }
 
-async function updateDOM() {
+const updateDOM = async(temp, date, feel) => {
     try {
-        const fetchUIData = await fetch('http://localhost:3000/all');
-        const response = await fetchUIData.json();
-        console.log({ fetchUIData });
+        /*  const fetchUIData = await fetch('http://localhost:3000/all');
+         const response = await fetchUIData.json(); */
         const dateElement = document.getElementById("date");
         const tempElement = document.getElementById("temp");
         const contentElement = document.getElementById("content");
-        dateElement.innerHTML = response.date;
-        tempElement.innerHTML = `${response.temp}`;
-        contentElement.innerHTML = `${response.content}`;
-        console.log(response)
+        dateElement.innerHTML = date;
+        tempElement.innerHTML = `${temp}°C`;
+        contentElement.innerHTML = `Feelings this day: ${feel}`;
+        console.log(temp, date, feel);
     } catch (error) {
         console.log(error, 'updating UI didnt work')
     }
 }
 
-async function generatingResults() {
+const generatingResults = async() => {
     try {
         const zip = document.getElementById("zip").value;
         const weather = await getData(zip);
@@ -58,7 +59,7 @@ async function generatingResults() {
         const feelings = document.getElementById("feelings").value;
         postData("/all", data = { date: date, temp: temperature, content: feelings });
         console.log(date, feelings, temperature);
-        updateDOM();
+        updateDOM(temperature, date, feelings);
     } catch (error) {
         console.log(error, "generatingResults didnt")
     }
@@ -67,34 +68,3 @@ async function generatingResults() {
 generateBtn.addEventListener("click", () => {
     generatingResults();
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Personal API Key for OpenWeatherMap API
-
-// Event listener to add function to existing HTML DOM element
-
-/* Function called by event listener */
-
-/* Function to GET Web API Data*/
-
-/* Function to POST data */
-
-/* Function to GET Project Data */
