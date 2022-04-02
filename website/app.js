@@ -35,8 +35,6 @@ const postData = async(url, data) => {
 
 const updateDOM = async(temp, date, feel) => {
     try {
-        /*  const fetchUIData = await fetch('http://localhost:3000/all');
-         const response = await fetchUIData.json(); */
         const dateElement = document.getElementById("date");
         const tempElement = document.getElementById("temp");
         const contentElement = document.getElementById("content");
